@@ -49,7 +49,7 @@ func changeArray( array ar: [Int])->[Int] {
     var secondArray: [Int] = ar
    // print("новый массив \(secondArray)")
     for i in 0..<100 {
-        if  isItEven(number: ar[i]) || isItDiv3(number: ar[i]) { //print(" удаляем число \(i)")
+        if  isItEven(number: ar[i]) || !(isItDiv3(number: ar[i])) { //print(" удаляем число \(i)")
             secondArray.remove(at: secondArray.index(of: i)!)
         }
     }
@@ -58,6 +58,8 @@ func changeArray( array ar: [Int])->[Int] {
 newArray = changeArray(array: newArray) //не разобрался как сделать войд метод, при попытке изменить входной массив внутри функции выдает ошибку что его нельзя изменить
 
 print ("измененный массив \(newArray)")
+
+
 
 
 
