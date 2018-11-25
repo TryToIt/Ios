@@ -59,7 +59,27 @@ newArray = changeArray(array: newArray) //не разобрался как сд�
 
 print ("измененный массив \(newArray)")
 
+//5. * Написать функцию, которая добавляет в массив новое число Фибоначчи, и добавить при помощи нее 100 элементов.
 
+var fibArray: [Float] = []
 
+func addFibonachi (array ar: [Float]) -> [Float]
+{
+    var secondArray: [Float] = ar
+   
+    for i in 0...100 {
+    if secondArray.count == 0 {
+       secondArray.append(0)
+    } else if secondArray.count == 1 {
+      secondArray.append(1)
+    } else { //print(secondArray[ secondArray.count-1])
+        secondArray.append(secondArray[secondArray.count-1] + secondArray[secondArray.count - 2])
+        
+    }
+    }
+    return secondArray
+}
+fibArray = addFibonachi(array: fibArray)
 
+print("числа фибоначи \(fibArray)")// вывод конечно не очень но формально работает 
 
