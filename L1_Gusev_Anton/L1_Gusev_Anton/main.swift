@@ -55,6 +55,13 @@ print ("Гипотенуза H = \(H)")
 print ("Периметр треугольника Р = \(Double(k1+k2)+H)")
 print("--------------------------")
 //3. * Пользователь вводит сумму вклада в банк и годовой процент. Найти сумму вклада через 5 лет.
+print("Введите первоначальный взнос, годовую процентную ставку и время(в годах) вклада")
+var deposit:Int = Int(readLine()!)!
+let percent:Int = Int(readLine()!)!
+let time: Int = Int(readLine()!)!
+deposit += deposit*percent*time/100
+print("deposit \(deposit) ")
+
 
 
 
