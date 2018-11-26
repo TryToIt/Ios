@@ -10,64 +10,76 @@
 //import Darwin
 import Foundation
 
-print("необходимо решить уравнение вида aх^2+bx+c=y при y = 0")
-
-let y=0
-var a: Int = 1
-var b: Int = 6
-var c: Int = 2
-//var x1: Double
-//var x2: Double
-
-print("при а= \(a) b= \(b) c= \(c)")
-
-//print("корени уравнения (\(-b) +- √ \(b*b - 4*a*c))/\(2*a)")
-
-func Disc (a: Int, b: Int, c: Int)->Double{
-    return pow(Double(b),2)-Double(4*a*c)
+//1. Написать функцию, которая определяет, четное число или нет.
+func isItEven(number n:Int) -> Bool {
+    return n % 2 == 0 ? true : false
 }
-var D: Double = Disc(a: a, b: b, c: c)
-if D < 0.0 {
-    print ("корени уравнения (\(-b) ± \(sqrt (-D) ) * i)/ \(2*a)")//как ограничить вывод знаков после запятой?
-} else if D>0{
-   // x1 = (Double(-b) - sqrt (D)) / (2*Double(a))
-   print( "первый корень уровнения x1 = \( (Double(-b) + sqrt (D))/(2 * Double(a)))")
-    //x2 = (Double(-b) - sqrt (D))/(2*Double(a))
-   print( "второй корень уровнения x2 = \( (Double(-b) - sqrt (D))/(2 * Double(a)))")
-}else {
-    print("Единственный корень уравнения x =  \( (Double(-b) - sqrt (D))/(2 * Double(a)))")
+
+print("введите число")
+var firstNumber: Int = Int(readLine()!)!
+
+print("число \(firstNumber) четное \(isItEven(number: firstNumber))" )
+print("------------------------------")
+
+
+//2. Написать функцию, которая определяет, делится ли число без остатка на 3.
+
+func isItDiv3(number n:Int) -> Bool {
+    return n % 3 == 0 ? true : false
 }
-print("--------------------------")
-//print(Disc(a: a, b: b, c: c))
-//x1 = Double(-b) + sqrt (Double(b * b - 4 * a * c))
-//print (x1)
 
-//2. Даны катеты прямоугольного треугольника. Найти площадь, периметр и гипотенузу треугольника.
-let k1: Int = 1
-let k2: Int = 1
-//var S: Double
-var P: Double
-var H: Double
-print ("Найти площадь, периметр и гипотенузу прямоугольного треугольника с катетами к1 = \(k1) k2 = \(k2)")
-print ("Площадь S = \(k1*k2/2)")
-H = sqrt(pow(Double(k1), 2) + pow(Double(k2),2))
-print ("Гипотенуза H = \(H)")
-print ("Периметр треугольника Р = \(Double(k1+k2)+H)")
-print("--------------------------")
-//3. * Пользователь вводит сумму вклада в банк и годовой процент. Найти сумму вклада через 5 лет.
-print("Введите первоначальный взнос, годовую процентную ставку и время(в годах) вклада")
-var deposit:Int = Int(readLine()!)!
-let percent:Int = Int(readLine()!)!
-let time: Int = Int(readLine()!)!
-deposit += deposit*percent*time/100
-print("deposit \(deposit) ")
+print("число \(firstNumber) делиться без остатка на три \(isItDiv3(number: firstNumber))" )
+print("------------------------------")
 
 
+//3. Создать возрастающий массив из 100 чисел.
 
+var  newArray: [Int] = []
+var i: Int = 0
+while i < 100 {
+    newArray.append(i)
+    i += 1
+}
+print("создан новый массив \(newArray)")
 
+print("------------------------------")
+//4. Удалить из этого массива все четные числа и все числа, которые не делятся на 3.
 
+func changeArray( array ar: [Int])->[Int] {
+    var secondArray: [Int] = ar
+   // print("новый массив \(secondArray)")
+    for i in 0..<100 {
+        if  isItEven(number: ar[i]) || !(isItDiv3(number: ar[i])) { //print(" удаляем число \(i)")
+            secondArray.remove(at: secondArray.index(of: i)!)
+        }
+    }
+    return secondArray
+}
+newArray = changeArray(array: newArray) //не разобрался как сделать войд метод, при попытке изменить входной массив внутри функции выдает ошибку что его нельзя изменить
 
+print ("измененный массив \(newArray)")
 
+//5. * Написать функцию, которая добавляет в массив новое число Фибоначчи, и добавить при помощи нее 100 элементов.
 
+var fibArray: [Float] = []
 
+func addFibonachi (array ar: [Float]) -> [Float]
+{
+    var secondArray: [Float] = ar
+   
+    for i in 0...100 {
+    if secondArray.count == 0 {
+       secondArray.append(0)
+    } else if secondArray.count == 1 {
+      secondArray.append(1)
+    } else { //print(secondArray[ secondArray.count-1])
+        secondArray.append(secondArray[secondArray.count-1] + secondArray[secondArray.count - 2])
+        
+    }
+    }
+    return secondArray
+}
+fibArray = addFibonachi(array: fibArray)
+
+print("числа фибоначи \(fibArray)")// вывод конечно не очень но формально работает 
 
